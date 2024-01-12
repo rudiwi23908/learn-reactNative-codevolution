@@ -1,62 +1,36 @@
-import {
-  StatusBar,
-  View,
-  Text,
-  Image,
-  ImageBackground,
-  ScrollView,
-} from "react-native";
-const profileImg = require("./images/kemal.jpg");
-import Welcome from "./components/Welcome.jsx";
+// import Welcome from "./components/Welcome.jsx";
+// import Learn from "./components/Learn.jsx";
 
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+import HomeScreen from "./src/screens/HomeScreen";
+import DataBarang from "./src/screens/DataBarang";
+import DataCustomer from "./src/screens/DataCustomer";
+import DataKasir from "./src/screens/DataKasir";
+import DataPenjualan from "./src/screens/DataPenjualan";
+
+const Stack = createStackNavigator();
 export default function App() {
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "navy",
-      }}
-    >
-      <ScrollView>
-        <StatusBar />
-        <Text
-          style={{
-            fontSize: 24,
-            color: "red",
-          }}
-        >
-          Hello <Text style={{ color: "white" }}>World</Text>
-        </Text>
-        <Image source={profileImg} style={{ width: 50, height: 50 }} />
-        <Image
-          style={{ width: 400, height: 400 }}
-          source={{ uri: "https://picsum.photos/400" }}
-        />
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
-          <ImageBackground source={profileImg} style={{ height: 100 }}>
-            <Text style={{ fontSize: 20, color: "white" }}>
-              Tulisan di depannya background
-            </Text>
-          </ImageBackground>
-        </View>
-        <Text style={{ fontSize: 24, color: "white" }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia iusto
-          excepturi neque voluptatem, tempore molestias exercitationem, iure rem
-          accusantium sit explicabo nulla quos? Animi, quis sint. Itaque
-          laboriosam dolorum consectetur perferendis eos eveniet harum. Vitae
-          recusandae adipisci officia ratione et assumenda excepturi incidunt
-          voluptate natus delectus quam, iure distinctio quaerat quasi, eos
-          doloribus aspernatur voluptatum placeat sapiente non dignissimos, odit
-          fugiat cupiditate. Dolorem, cupiditate recusandae numquam eius,
-          distinctio vel quasi provident molestias suscipit ex, temporibus
-          consectetur fugiat ducimus itaque aut labore impedit quam similique
-          veritatis sint! Optio, deserunt unde! Dolore aspernatur culpa omnis id
-          fugit vero repudiandae quam tenetur sed!
-        </Text>
-      </ScrollView>
-    </View>
+    // <Learn />
     // <Welcome />
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="DataBarang"
+          component={DataBarang}
+          // options={{ headerShown: false }}
+        />
+        <Stack.Screen name="DataKasir" component={DataKasir} />
+        <Stack.Screen name="DataPenjualan" component={DataPenjualan} />
+        <Stack.Screen name="DataCustomer" component={DataCustomer} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
